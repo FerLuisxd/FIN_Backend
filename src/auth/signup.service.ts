@@ -1,7 +1,10 @@
 import { HttpException, Injectable, BadRequestException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { AuthHelper } from './auth.helper';
-
+let key = process.env.KEY||'dsaadsadsadsafsads2adsa';
+ 
+// Create an encryptor:
+let encryptor = require('simple-encryptor')(key);
 @Injectable()
 export class SignUpService {
     constructor(private userService:UserService, private authHelper:AuthHelper){

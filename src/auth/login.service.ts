@@ -2,7 +2,10 @@ import { HttpException, Injectable } from '@nestjs/common';
 import { AuthHelper } from './auth.helper';
 import { db } from '../db/sqlLite3';
 const DB = require('better-sqlite3-helper');
-
+let key = process.env.KEY||'dsaadsadsadsafsads2adsa';
+ 
+// Create an encryptor:
+let encryptor = require('simple-encryptor')(key);
 @Injectable()
 export class LoginService {
 
@@ -13,19 +16,18 @@ export class LoginService {
   /*******************************************************
    * Basic Login with credentials
    *******************************************************/
-  public login(email, password) {
+  public login(email, encryptedPass) {
 
     if (!email) {
       return (new HttpException("Email is required", 422))
     }
-    if (!password) {
+    if (!encryptedPass) {
       return (new HttpException("Password is required", 422))
     }
-
     return new Promise((resolve, reject) => {
       let row = DB().queryFirstRow('SELECT * FROM user WHERE email=?', email);
       if(row){
-      if(row.password != password){
+      if(row.password != encryptedPass){
         return reject(new HttpException("Incorrect password", 401))
       }
       else{
