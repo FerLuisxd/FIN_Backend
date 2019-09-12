@@ -3,7 +3,7 @@ import { AuthHelper } from './auth.helper';
 import { db } from '../db/sqlLite3';
 const DB = require('better-sqlite3-helper');
 let key = process.env.KEY||'dsaadsadsadsafsads2adsa';
- 
+ //update
 // Create an encryptor:
 let encryptor = require('simple-encryptor')(key);
 @Injectable()
