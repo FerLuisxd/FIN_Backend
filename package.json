@@ -29,7 +29,7 @@
     "better-sqlite3-helper": "2.1.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "jsonwebtoken": "8.5.1",
+    "jsonwebtoken": "9.0.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.0",
     "rxjs": "6.5.3",
